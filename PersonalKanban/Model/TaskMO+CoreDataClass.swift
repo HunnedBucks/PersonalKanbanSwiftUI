@@ -16,8 +16,8 @@ public class TaskMO: NSManagedObject {
     convenience init() {
         self.init(entity: TaskMO.entity(), insertInto: PersistenceManager.shared.context)
         self.id = UUID()
-        self.name = "no name entered yet"
-        self.info = "no info entered yet"
+        self.name = ""
+        self.info = ""
     }
     convenience init?(_ name: String, info: String) {
         self.init(entity: TaskMO.entity(), insertInto: PersistenceManager.shared.context)

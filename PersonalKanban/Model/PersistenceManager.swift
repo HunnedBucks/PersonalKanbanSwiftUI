@@ -70,17 +70,6 @@ class PersistenceManager {
         }
     }
     
-//    func fetchTasksWhere(status: String) -> [Task] {
-//        let tasks = self.fetch(Task.self)
-//        var tempList = [Task]()
-//        for task in tasks {
-//            if status == task.status! {
-//                tempList.append(task)
-//            }
-//        }
-//        return tempList
-//    }
-    
     func delete(_ object: NSManagedObject) {
         context.delete(object)
         save()
