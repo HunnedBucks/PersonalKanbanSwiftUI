@@ -8,14 +8,95 @@
 
 import SwiftUI
 
-struct TaskEditor : View {
-    @State var tasks: [TaskMO]
+struct TaskHost: View {
+    @State var task: TaskMO
+    @Environment(\.editMode) var mode
     
     var body: some View {
-        Text("name: ")
+        VStack(alignment: .leading, spacing: 20) {
+            if self.mode?.value == .inactive {
+                TaskDetail(task: task)
+            } else {
+                TaskEditor(task: $task)
+            }
+        }.padding()
+        .navigationBarItems(trailing: EditButton())
     }
-    
 }
+
+struct TaskDetail: View {
+    var task: TaskMO
+    var body: some View {
+        HStack {
+            VStack(alignment: .leading) {
+                Text(task.name)
+                    .font(.headline)
+                
+                Text(task.info)
+                
+                Spacer()
+            }
+            .padding()
+            
+            Spacer()
+        }
+    }
+}
+
+struct TaskEditor: View {
+    @Binding var task: TaskMO
+    
+    var body: some View {
+        HStack {
+            VStack(alignment: .leading) {
+                TextField($task.name)
+                TextField($task.info)
+                Spacer()
+            }
+            Spacer()
+            }
+            .navigationBarItems(
+                leading:  Button(action: { () -> Void in
+                    //PersistenceManager.shared.save()
+                    //self.visibleModeOff = true
+                }) { Text("cancel") } ,
+                trailing:
+                Button(action: { () -> Void in
+                    PersistenceManager.shared.save()
+                    //self.visibleModeOff = true
+                }) { Text("save") })
+    }
+}
+
+
+struct AddTaskScreen : View {
+    @State var task = TaskMO()
+    @Binding var visibleModeOff: Bool
+    
+    var body: some View {
+        HStack {
+            VStack(alignment: .leading) {
+                TextField($task.name)
+                TextField($task.info)
+                Spacer()
+            }
+            Spacer()
+            }
+            .navigationBarItems(
+                leading:  Button(action: { () -> Void in
+                    //PersistenceManager.shared.save()
+                    self.visibleModeOff = true
+                }) { Text("cancel") } ,
+                trailing:
+                Button(action: { () -> Void in
+                    PersistenceManager.shared.save()
+                    self.visibleModeOff = true
+                }) { Text("save") })
+    }
+}
+
+
+
 //struct TaskEditor : View {
 //    @State var task: TaskMO
 //    @State var isPresented = false

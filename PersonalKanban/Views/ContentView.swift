@@ -10,53 +10,27 @@ import SwiftUI
 import CoreData
 
 struct ContentView : View {
-   // @State var addScreenVisible = false
-    @State var tasks: [TaskMO] //= PersistenceManager.shared.fetchTasks()
-    @State var isList = true
+    @State var tableModeOn = true
     
     var body: some View {
         NavigationView {
-
-            if isList {
-                Button(action: { () -> Void in
-                    self.tasks = PersistenceManager.shared.fetchTasks()
-                    self.isList = false
-                }) { Text("add") }
-                Button(action: { () -> Void in
-                    print("tasks names: ")
-                    for task in self.tasks {
-                        print(task.name)
-                    }
-                }) {
-                    Text("display")
-                }
-                Text("the kanban board will appear here")
-                
-                .navigationBarItems(trailing: Button(action: { () -> Void in
-                    print("add button tapped")
-                    self.isList = false
-                }, label: { Text("add") }))
+            if tableModeOn {
+                WorkflowView(visibleMode: $tableModeOn)
             } else {
-                AddTaskScreen(shouldDismiss: $isList)
-                
-                .navigationBarItems(trailing: Button(action: { () -> Void in
-                    print("save btn tapped")
-                    PersistenceManager.shared.save()
-                    self.isList = true
-                    }, label: { Text("save") }))
+                AddTaskScreen(visibleModeOff: $tableModeOn)
             }
-           
         }
-        
-        
-        //(nil, onDismiss: { self.tasks = PersistenceManager.shared.fetchTasks() } )
     }
 }
 
 
 
+
+
+
+
 //struct TaskList : View {
-//    @State var popupIsVisible = false
+//
 //    @State var newTask: TaskMO = TaskMO()
 //    var body: some View {
 //        HStack {
