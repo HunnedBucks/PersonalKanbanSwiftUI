@@ -13,10 +13,20 @@ struct ContentView : View {
    // @State var addScreenVisible = false
     @State var tasks: [TaskMO]
     
+//    init() {
+//        tasks = PersistenceManager.shared.fetchTasks()
+//    }
+    
     var body: some View {
         NavigationView {
             NavigationButton(destination: AddTaskScreen()) {
                 Text("Add")
+            }
+            Button(action: {self.tasks = PersistenceManager.shared.fetchTasks()}) {
+                Text("reload tasks")
+            }
+            Button(action: { print("tasks are : ") }) {
+                Text("display")
             }
             Text("the kanban board will appear here")
         }

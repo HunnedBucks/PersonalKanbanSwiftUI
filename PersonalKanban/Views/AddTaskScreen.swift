@@ -9,8 +9,19 @@
 import SwiftUI
 
 struct AddTaskScreen : View {
+    @State var task = TaskMO()
     var body: some View {
-        Text("add tasks on this screen")
+        HStack {
+            VStack(alignment: .leading) {
+                TextField($task.name)
+                TextField($task.info)
+                Spacer()
+            }
+            Spacer()
+            }.navigationBarItems(trailing:
+                Button(action: { PersistenceManager.shared.save()} ) {
+                    Text("save")
+                })
     }
 }
 
