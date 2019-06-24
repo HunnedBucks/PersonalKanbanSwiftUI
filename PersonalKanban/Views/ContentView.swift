@@ -25,7 +25,12 @@ struct ContentView : View {
             Button(action: {self.tasks = PersistenceManager.shared.fetchTasks()}) {
                 Text("reload tasks")
             }
-            Button(action: { print("tasks are : ") }) {
+            Button(action: { () -> Void in
+                print("tasks names: ")
+                for task in self.tasks {
+                    print(task.name)
+                }
+            }) {
                 Text("display")
             }
             Text("the kanban board will appear here")
