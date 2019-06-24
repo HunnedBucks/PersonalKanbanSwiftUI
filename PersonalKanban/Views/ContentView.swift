@@ -7,21 +7,134 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct ContentView : View {
+   // @State var addScreenVisible = false
+    @State var tasks: [TaskMO]
+    
     var body: some View {
         NavigationView {
-            HStack {
-                TaskList()
+            NavigationButton(destination: AddTaskScreen()) {
+                Text("Add")
             }
+            Text("the kanban board will appear here")
         }
+       
     }
 }
 
-#if DEBUG
-struct ContentView_Previews : PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
-}
-#endif
+
+//struct TaskList : View {
+//    @State var popupIsVisible = false
+//    @State var newTask: TaskMO = TaskMO()
+//    var body: some View {
+//        HStack {
+//            List(0..<5) { item in
+//                ListItem()
+//
+//                }
+//
+//        .presentation(popupIsVisible ? Modal(EditorContent(isPresented: $popupIsVisible,
+//                toEdit: $newTask,
+//                doneBtn: TogglePresentationButton(isOn: $popupIsVisible),
+//                saveBtn: SaveDataButton(isOn: $popupIsVisible)), onDismiss: { self.newTask = TaskMO() } ) : nil )
+//        }
+//        .navigationBarItems(trailing: TogglePresentationButton(isOn: $popupIsVisible))
+//    }
+//}
+//
+//struct TogglePresentationButton: View {
+//    @Binding var isOn: Bool
+//    var body: some View {
+//        Button(
+//            action: { self.isOn.toggle() },
+//            label: { Text("cancel") }
+//        )
+//    }
+//}
+//
+//struct SaveDataButton: View {
+//    @Binding var isOn: Bool
+//    func savePersistentDataStore() {
+//        PersistenceManager.shared.save()
+//        self.isOn.toggle()
+//    }
+//    var body: some View {
+//        Button(
+//            action: { self.savePersistentDataStore() },
+//            label: { Text("save") }
+//        )
+//    }
+//}
+//
+//
+//struct EditorContent: View {
+//    @Binding var isPresented: Bool
+//    @Binding var toEdit: TaskMO
+//
+//    var doneBtn: TogglePresentationButton
+//    var saveBtn: SaveDataButton
+//
+//    var body: some View {
+//        VStack {
+//            HStack {
+//                doneBtn
+//                Spacer()
+//                saveBtn
+//            }
+//
+//            TextField($toEdit.name)
+//
+//            TextField($toEdit.info)
+//
+//            Spacer()
+//
+//        }
+//    }
+//
+//    func makeFalse() {
+//        isPresented = false
+//    }
+//}
+//
+//
+//
+//
+////struct ContentView : View {
+////    @State var isPresented = false
+////
+////    var body: some View {
+////        NavigationView {
+////            NavigationButton(destination: Text("Hello World")
+////                .font(.caption)
+////                .navigationBarTitle(Text("Detail View Contents"))
+////            ) {
+////                Text("Show Detail View")
+////                }
+////                .navigationBarTitle(Text("Welcome"))
+////                .navigationBarItems(trailing:
+////                    Button(action: { self.isPresented = true }) { Text("Show Modal") })
+////            }
+////            .presentation( isPresented ? Modal(EditorContent(isPresented: $isPresented), onDismiss: { }) : nil )
+////    }
+////}
+////
+////
+////struct EditorContent: View {
+////    @Binding var isPresented: Bool
+////
+////    var body: some View {
+////        NavigationView {
+////            Text("Hello World")
+////
+////            .font(.caption)
+////            .navigationBarTitle(Text("Modal Contents"))
+////            .navigationBarItems(trailing: Button(action: { self.makeFalse() } ) { Text("Done") })
+////        }
+////    }
+////
+////    func makeFalse() {
+////        isPresented = false
+////    }
+////}

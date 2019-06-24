@@ -19,6 +19,13 @@
 		7135910E22BC67F0005E9C0B /* ListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7135910D22BC67F0005E9C0B /* ListItem.swift */; };
 		7135911022BC69A1005E9C0B /* TaskDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7135910F22BC69A1005E9C0B /* TaskDetail.swift */; };
 		7135911322BC6C62005E9C0B /* TaskList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7135911222BC6C62005E9C0B /* TaskList.swift */; };
+		7191273F22C0853E00B1772D /* AddTaskScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7191273E22C0853E00B1772D /* AddTaskScreen.swift */; };
+		71BE13BF22BD863600F102C9 /* EpicDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BE13BE22BD863600F102C9 /* EpicDetail.swift */; };
+		71BE13C522BD887F00F102C9 /* TaskMO+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BE13C322BD887F00F102C9 /* TaskMO+CoreDataClass.swift */; };
+		71BE13C622BD887F00F102C9 /* TaskMO+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BE13C422BD887F00F102C9 /* TaskMO+CoreDataProperties.swift */; };
+		71BE13C822BD89FB00F102C9 /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BE13C722BD89FB00F102C9 /* PersistenceManager.swift */; };
+		71BE13CA22BD947200F102C9 /* BindableTaskData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BE13C922BD947200F102C9 /* BindableTaskData.swift */; };
+		71BE13CC22BD96C700F102C9 /* TaskEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BE13CB22BD96C700F102C9 /* TaskEditor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +64,13 @@
 		7135910D22BC67F0005E9C0B /* ListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListItem.swift; sourceTree = "<group>"; };
 		7135910F22BC69A1005E9C0B /* TaskDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDetail.swift; sourceTree = "<group>"; };
 		7135911222BC6C62005E9C0B /* TaskList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskList.swift; sourceTree = "<group>"; };
+		7191273E22C0853E00B1772D /* AddTaskScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskScreen.swift; sourceTree = "<group>"; };
+		71BE13BE22BD863600F102C9 /* EpicDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpicDetail.swift; sourceTree = "<group>"; };
+		71BE13C322BD887F00F102C9 /* TaskMO+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TaskMO+CoreDataClass.swift"; sourceTree = "<group>"; };
+		71BE13C422BD887F00F102C9 /* TaskMO+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TaskMO+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		71BE13C722BD89FB00F102C9 /* PersistenceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
+		71BE13C922BD947200F102C9 /* BindableTaskData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BindableTaskData.swift; sourceTree = "<group>"; };
+		71BE13CB22BD96C700F102C9 /* TaskEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskEditor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +127,7 @@
 				713590E822BC661D005E9C0B /* LaunchScreen.storyboard */,
 				713590EB22BC661D005E9C0B /* Info.plist */,
 				713590DE22BC661B005E9C0B /* PersonalKanban.xcdatamodeld */,
+				71BE13C022BD878E00F102C9 /* Model */,
 				7135911122BC69FF005E9C0B /* Views */,
 				713590E522BC661D005E9C0B /* Preview Content */,
 			);
@@ -149,11 +164,25 @@
 			isa = PBXGroup;
 			children = (
 				713590E122BC661B005E9C0B /* ContentView.swift */,
+				7191273E22C0853E00B1772D /* AddTaskScreen.swift */,
+				71BE13CB22BD96C700F102C9 /* TaskEditor.swift */,
+				7135911222BC6C62005E9C0B /* TaskList.swift */,
 				7135910D22BC67F0005E9C0B /* ListItem.swift */,
 				7135910F22BC69A1005E9C0B /* TaskDetail.swift */,
-				7135911222BC6C62005E9C0B /* TaskList.swift */,
+				71BE13BE22BD863600F102C9 /* EpicDetail.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		71BE13C022BD878E00F102C9 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				71BE13C722BD89FB00F102C9 /* PersistenceManager.swift */,
+				71BE13C922BD947200F102C9 /* BindableTaskData.swift */,
+				71BE13C322BD887F00F102C9 /* TaskMO+CoreDataClass.swift */,
+				71BE13C422BD887F00F102C9 /* TaskMO+CoreDataProperties.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -289,11 +318,18 @@
 			files = (
 				7135911322BC6C62005E9C0B /* TaskList.swift in Sources */,
 				7135910E22BC67F0005E9C0B /* ListItem.swift in Sources */,
+				71BE13C522BD887F00F102C9 /* TaskMO+CoreDataClass.swift in Sources */,
+				71BE13CA22BD947200F102C9 /* BindableTaskData.swift in Sources */,
+				7191273F22C0853E00B1772D /* AddTaskScreen.swift in Sources */,
+				71BE13C822BD89FB00F102C9 /* PersistenceManager.swift in Sources */,
+				71BE13CC22BD96C700F102C9 /* TaskEditor.swift in Sources */,
+				71BE13C622BD887F00F102C9 /* TaskMO+CoreDataProperties.swift in Sources */,
 				7135911022BC69A1005E9C0B /* TaskDetail.swift in Sources */,
 				713590DB22BC661B005E9C0B /* AppDelegate.swift in Sources */,
 				713590DD22BC661B005E9C0B /* SceneDelegate.swift in Sources */,
 				713590E222BC661B005E9C0B /* ContentView.swift in Sources */,
 				713590E022BC661B005E9C0B /* PersonalKanban.xcdatamodeld in Sources */,
+				71BE13BF22BD863600F102C9 /* EpicDetail.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

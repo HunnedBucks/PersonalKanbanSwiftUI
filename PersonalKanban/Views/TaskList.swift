@@ -8,18 +8,12 @@
 
 import SwiftUI
 
-struct TaskList : View {
-    var body: some View {
-        List(0..<5) { item in
-            ListItem()
-        }
-    }
-}
+
 
 #if DEBUG
-struct TaskList_Previews : PreviewProvider {
-    static var previews: some View {
-        TaskList()
-    }
-}
+//struct TaskList_Previews : PreviewProvider {
+//    static var previews: some View {
+//       // TaskList(tasks: PersistenceManager.shared.fetchStoredTasks())
+//    }
+//}
 #endif

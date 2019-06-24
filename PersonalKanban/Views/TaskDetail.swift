@@ -9,16 +9,24 @@
 import SwiftUI
 
 struct TaskDetail : View {
+    
     var body: some View {
-        VStack(alignment: .leading) {
-            Text("Task Title")
-            
-            Text("Task Description")
-                .font(.subheadline)
-                .foregroundColor(.secondary)
+        HStack {
+            VStack(alignment: .leading) {
+                Text("Task Title")
+                
+                Text("Task Description")
+                    .font(.subheadline)
+                    .foregroundColor(.secondary)
+                
+                Spacer()
+            }
+            .padding()
             
             Spacer()
         }
+        .navigationBarTitle(Text("DETAIL"))
+        .navigationBarItems(trailing: EditButton())
     }
 }
 

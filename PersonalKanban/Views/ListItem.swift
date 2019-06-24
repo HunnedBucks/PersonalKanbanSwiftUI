@@ -9,6 +9,7 @@
 import SwiftUI
 
 struct ListItem : View {
+    
     var body: some View {
         NavigationButton(destination: TaskDetail()) {
             HStack {
