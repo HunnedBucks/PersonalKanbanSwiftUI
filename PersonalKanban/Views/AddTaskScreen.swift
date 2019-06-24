@@ -10,6 +10,8 @@ import SwiftUI
 
 struct AddTaskScreen : View {
     @State var task = TaskMO()
+    @Binding var shouldDismiss: Bool
+    
     var body: some View {
         HStack {
             VStack(alignment: .leading) {
@@ -18,17 +20,21 @@ struct AddTaskScreen : View {
                 Spacer()
             }
             Spacer()
-            }.navigationBarItems(trailing:
-                Button(action: { PersistenceManager.shared.save()} ) {
+            }
+            .navigationBarItems(trailing:
+                Button(action: { () -> Void in
+                    PersistenceManager.shared.save()
+                    self.shouldDismiss = true
+                }) {
                     Text("save")
-                })
+            })
     }
 }
 
-#if DEBUG
-struct AddTaskScreen_Previews : PreviewProvider {
-    static var previews: some View {
-        AddTaskScreen()
-    }
-}
-#endif
+//#if DEBUG
+//struct AddTaskScreen_Previews : PreviewProvider {
+//    static var previews: some View {
+//        AddTaskScreen()
+//    }
+//}
+//#endif

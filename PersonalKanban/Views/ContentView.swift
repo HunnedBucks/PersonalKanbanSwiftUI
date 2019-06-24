@@ -11,33 +11,48 @@ import CoreData
 
 struct ContentView : View {
    // @State var addScreenVisible = false
-    @State var tasks: [TaskMO]
-    
-//    init() {
-//        tasks = PersistenceManager.shared.fetchTasks()
-//    }
+    @State var tasks: [TaskMO] //= PersistenceManager.shared.fetchTasks()
+    @State var isList = true
     
     var body: some View {
         NavigationView {
-            NavigationButton(destination: AddTaskScreen()) {
-                Text("Add")
-            }
-            Button(action: {self.tasks = PersistenceManager.shared.fetchTasks()}) {
-                Text("reload tasks")
-            }
-            Button(action: { () -> Void in
-                print("tasks names: ")
-                for task in self.tasks {
-                    print(task.name)
+
+            if isList {
+                Button(action: { () -> Void in
+                    self.tasks = PersistenceManager.shared.fetchTasks()
+                    self.isList = false
+                }) { Text("add") }
+                Button(action: { () -> Void in
+                    print("tasks names: ")
+                    for task in self.tasks {
+                        print(task.name)
+                    }
+                }) {
+                    Text("display")
                 }
-            }) {
-                Text("display")
+                Text("the kanban board will appear here")
+                
+                .navigationBarItems(trailing: Button(action: { () -> Void in
+                    print("add button tapped")
+                    self.isList = false
+                }, label: { Text("add") }))
+            } else {
+                AddTaskScreen(shouldDismiss: $isList)
+                
+                .navigationBarItems(trailing: Button(action: { () -> Void in
+                    print("save btn tapped")
+                    PersistenceManager.shared.save()
+                    self.isList = true
+                    }, label: { Text("save") }))
             }
-            Text("the kanban board will appear here")
+           
         }
-       
+        
+        
+        //(nil, onDismiss: { self.tasks = PersistenceManager.shared.fetchTasks() } )
     }
 }
+
 
 
 //struct TaskList : View {
